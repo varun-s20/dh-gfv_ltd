@@ -1,0 +1,224 @@
+Campaign,Keyword,Criterion Type
+Account (shared list),for sale,Negative phrase
+Account (shared list),buy a tesla,Negative phrase
+Account (shared list),buy tesla,Negative phrase
+Account (shared list),buying a tesla,Negative phrase
+Account (shared list),buy electric car,Negative phrase
+Account (shared list),buy used,Negative phrase
+Account (shared list),where to buy,Negative phrase
+Account (shared list),best electric car to buy,Negative phrase
+Account (shared list),cheapest electric car,Negative phrase
+Account (shared list),used teslas for sale,Negative phrase
+Account (shared list),tesla deals,Negative phrase
+Account (shared list),tesla offers,Negative phrase
+Account (shared list),tesla price,Negative phrase
+Account (shared list),price of tesla,Negative phrase
+Account (shared list),how much is a tesla,Negative phrase
+Account (shared list),tesla configurator,Negative phrase
+Account (shared list),order tesla,Negative phrase
+Account (shared list),tesla delivery,Negative phrase
+Account (shared list),test drive,Negative phrase
+Account (shared list),showroom,Negative phrase
+Account (shared list),brand new,Negative phrase
+Account (shared list),lease,Negative phrase
+Account (shared list),leasing,Negative phrase
+Account (shared list),contract hire,Negative phrase
+Account (shared list),hire,Negative phrase
+Account (shared list),rental,Negative phrase
+Account (shared list),rent,Negative phrase
+Account (shared list),subscription,Negative phrase
+Account (shared list),salary sacrifice,Negative phrase
+Account (shared list),motability,Negative phrase
+Account (shared list),pcp deals,Negative phrase
+Account (shared list),finance deals,Negative phrase
+Account (shared list),finance calculator,Negative phrase
+Account (shared list),0% finance,Negative phrase
+Account (shared list),car club,Negative phrase
+Account (shared list),charger,Negative phrase
+Account (shared list),charging,Negative phrase
+Account (shared list),charge point,Negative phrase
+Account (shared list),chargepoint,Negative phrase
+Account (shared list),wallbox,Negative phrase
+Account (shared list),supercharger,Negative phrase
+Account (shared list),wall connector,Negative phrase
+Account (shared list),charging cable,Negative phrase
+Account (shared list),charger installation,Negative phrase
+Account (shared list),powerwall,Negative phrase
+Account (shared list),solar,Negative phrase
+Account (shared list),octopus,Negative phrase
+Account (shared list),tariff,Negative phrase
+Account (shared list),insurance,Negative phrase
+Account (shared list),insure,Negative phrase
+Account (shared list),extended warranty,Negative phrase
+Account (shared list),breakdown cover,Negative phrase
+Account (shared list),gap insurance,Negative phrase
+Account (shared list),repair,Negative phrase
+Account (shared list),service centre,Negative phrase
+Account (shared list),servicing,Negative phrase
+Account (shared list),mot,Negative phrase
+Account (shared list),garage near me,Negative phrase
+Account (shared list),tyres,Negative phrase
+Account (shared list),parts,Negative phrase
+Account (shared list),battery replacement,Negative phrase
+Account (shared list),battery replacement cost,Negative phrase
+Account (shared list),battery price,Negative phrase
+Account (shared list),body shop,Negative phrase
+Account (shared list),accessories,Negative phrase
+Account (shared list),wrap,Negative phrase
+Account (shared list),tint,Negative phrase
+Account (shared list),floor mats,Negative phrase
+Account (shared list),recall,Negative phrase
+Account (shared list),software update,Negative phrase
+Account (shared list),tesla stock,Negative phrase
+Account (shared list),tsla,Negative phrase
+Account (shared list),tesla shares,Negative phrase
+Account (shared list),tesla share price,Negative phrase
+Account (shared list),tesla earnings,Negative phrase
+Account (shared list),elon musk,Negative phrase
+Account (shared list),nikola tesla,Negative phrase
+Account (shared list),tesla coil,Negative phrase
+Account (shared list),tesla bot,Negative phrase
+Account (shared list),optimus,Negative phrase
+Account (shared list),robotaxi,Negative phrase
+Account (shared list),cybertruck,Negative phrase
+Account (shared list),tesla semi,Negative phrase
+Account (shared list),tesla roadster,Negative phrase
+Account (shared list),tesla app,Negative phrase
+Account (shared list),tesla login,Negative phrase
+Account (shared list),tesla account,Negative phrase
+Account (shared list),tesla customer service,Negative phrase
+Account (shared list),tesla phone number,Negative phrase
+Account (shared list),tesla insurance,Negative phrase
+Account (shared list),tesla energy,Negative phrase
+Account (shared list),jobs,Negative phrase
+Account (shared list),job,Negative phrase
+Account (shared list),careers,Negative phrase
+Account (shared list),vacancies,Negative phrase
+Account (shared list),salary,Negative phrase
+Account (shared list),hiring,Negative phrase
+Account (shared list),recruitment,Negative phrase
+Account (shared list),apprenticeship,Negative phrase
+Account (shared list),internship,Negative phrase
+Account (shared list),review,Negative phrase
+Account (shared list),specs,Negative phrase
+Account (shared list),specifications,Negative phrase
+Account (shared list),0-60,Negative phrase
+Account (shared list),top speed,Negative phrase
+Account (shared list),dimensions,Negative phrase
+Account (shared list),boot space,Negative phrase
+Account (shared list),towing capacity,Negative phrase
+Account (shared list),owners manual,Negative phrase
+Account (shared list),problems,Negative phrase
+Account (shared list),faults,Negative phrase
+Account (shared list),how to charge,Negative phrase
+Account (shared list),charging time,Negative phrase
+Account (shared list),range test,Negative phrase
+Account (shared list),ev grant,Negative phrase
+Account (shared list),road tax,Negative phrase
+Account (shared list),ved,Negative phrase
+Account (shared list),congestion charge,Negative phrase
+Account (shared list),ulez,Negative phrase
+Account (shared list),wikipedia,Negative phrase
+Account (shared list),gumtree,Negative phrase
+Account (shared list),ebay,Negative phrase
+Account (shared list),facebook marketplace,Negative phrase
+Account (shared list),privately,Negative phrase
+Account (shared list),private sale,Negative phrase
+Account (shared list),advertise my car,Negative phrase
+Account (shared list),autotrader listing,Negative phrase
+Account (shared list),list my car,Negative phrase
+Account (shared list),e bike,Negative phrase
+Account (shared list),ebike,Negative phrase
+Account (shared list),electric bike,Negative phrase
+Account (shared list),electric scooter,Negative phrase
+Account (shared list),e scooter,Negative phrase
+Account (shared list),electric motorbike,Negative phrase
+Account (shared list),electric motorcycle,Negative phrase
+Account (shared list),moped,Negative phrase
+Account (shared list),mobility scooter,Negative phrase
+Account (shared list),electric wheelchair,Negative phrase
+Account (shared list),golf buggy,Negative phrase
+Account (shared list),golf cart,Negative phrase
+Account (shared list),forklift,Negative phrase
+Account (shared list),hgv,Negative phrase
+Account (shared list),lorry,Negative phrase
+Account (shared list),electric truck,Negative phrase
+Account (shared list),bus,Negative phrase
+Account (shared list),toy,Negative phrase
+Account (shared list),kids electric car,Negative phrase
+Account (shared list),ride on,Negative phrase
+Account (shared list),rc car,Negative phrase
+Account (shared list),remote control,Negative phrase
+Account (shared list),diecast,Negative phrase
+Account (shared list),model kit,Negative phrase
+Account (shared list),lego,Negative phrase
+Account (shared list),hot wheels,Negative phrase
+Account (shared list),petrol,Negative phrase
+Account (shared list),diesel,Negative phrase
+Account (shared list),hybrid,Negative phrase
+Account (shared list),plug in hybrid,Negative phrase
+Account (shared list),phev,Negative phrase
+Account (shared list),lpg,Negative phrase
+Account (shared list),scrap,Negative phrase
+Account (shared list),scrapyard,Negative phrase
+Account (shared list),scrap value,Negative phrase
+Account (shared list),breakers,Negative phrase
+Account (shared list),salvage auction,Negative phrase
+Account (shared list),usa,Negative phrase
+Account (shared list),america,Negative phrase
+Account (shared list),canada,Negative phrase
+Account (shared list),australia,Negative phrase
+Account (shared list),ireland,Negative phrase
+Account (shared list),dubai,Negative phrase
+Account (shared list),india,Negative phrase
+Account (shared list),new zealand,Negative phrase
+Account (shared list),webuyanycar,Negative phrase
+Account (shared list),we buy any car,Negative phrase
+Account (shared list),motorway,Negative phrase
+Account (shared list),carwow,Negative phrase
+Account (shared list),autotrader,Negative phrase
+Account (shared list),auto trader,Negative phrase
+Account (shared list),cinch,Negative phrase
+Account (shared list),wizzle,Negative phrase
+Account (shared list),jamjar,Negative phrase
+Account (shared list),webuyanyvan,Negative phrase
+Account (shared list),we buy any van,Negative phrase
+Account (shared list),arnold clark,Negative phrase
+GF | Search | All EV,tesla,Negative phrase
+GF | Search | All EV,model 3,Negative phrase
+GF | Search | All EV,model y,Negative phrase
+GF | Search | All EV,model s,Negative phrase
+GF | Search | All EV,model x,Negative phrase
+GF | Search | All EV,van,Negative phrase
+GF | Search | All EV,vans,Negative phrase
+GF | Search | All EV,e-transit,Negative phrase
+GF | Search | All EV,e-nv200,Negative phrase
+GF | Search | All EV,proace,Negative phrase
+GF | Search | All EV,vivaro,Negative phrase
+GF | Search | Tesla,van,Negative phrase
+GF | Search | Tesla,vans,Negative phrase
+GF | Search | EV Vans,tesla,Negative phrase
+GF | Search | EV Vans,electric car,Negative phrase
+GF | Search | EV Vans,ev car,Negative phrase
+GF | Search | EV Vans,van hire,Negative phrase
+GF | Search | EV Vans,van rental,Negative phrase
+GF | Search | EV Vans,man and van,Negative phrase
+GF | Search | EV Vans,man with van,Negative phrase
+GF | Search | EV Vans,removal van,Negative phrase
+GF | Search | EV Vans,van insurance,Negative phrase
+GF | Search | EV Vans,van lease,Negative phrase
+GF | Search | EV Vans,van leasing,Negative phrase
+GF | Search | EV Vans,vans for sale,Negative phrase
+GF | Search | EV Vans,van for sale,Negative phrase
+GF | Search | EV Vans,camper,Negative phrase
+GF | Search | EV Vans,campervan,Negative phrase
+GF | Search | EV Vans,motorhome,Negative phrase
+GF | Search | EV Vans,van conversion,Negative phrase
+GF | Search | EV Vans,ice cream van,Negative phrase
+GF | Search | EV Vans,van racking,Negative phrase
+GF | Search | EV Vans,roof rack,Negative phrase
+GF | Search | EV Vans,minibus,Negative phrase
+GF | Search | Tesla,trade in my car for a tesla,Negative exact
+GF | Search | Tesla,tesla trade in offer,Negative exact
+GF | Search | Tesla,tesla scrappage scheme,Negative exact
+GF | Search | Tesla,tesla part exchange new model y,Negative exact

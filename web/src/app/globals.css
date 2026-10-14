@@ -1,0 +1,1109 @@
+@import "tailwindcss";
+
+/*
+  ION
+  A night-black showroom, warm pearl daylight sections and a single pale "ion"
+  green that only ever means energy: the battery, live status, focus.
+  Archivo carries the display voice, stretched wide like a badge on a bootlid;
+  Instrument Sans does the reading.
+*/
+@theme {
+  --color-night-950: #050607;
+  --color-night-900: #08090b;
+  --color-night-850: #0c0e10;
+  --color-night-800: #111316;
+  --color-night-750: #16191d;
+  --color-night-700: #1d2126;
+  --color-night-600: #2a2f35;
+  --color-night-500: #3b4148;
+
+  --color-pearl-50: #fbfaf8;
+  --color-pearl-100: #f4f2ee;
+  --color-pearl-200: #eae7e1;
+  --color-pearl-300: #dcd8d0;
+  --color-pearl-400: #c4bfb5;
+
+  /* Type on night */
+  --color-chalk: #efede8;
+  --color-chalk-2: #a7aaaf;
+  --color-chalk-3: #868a90;
+  /* Type on pearl */
+  --color-carbon: #0d0f12;
+  --color-carbon-2: #4c5057;
+  --color-carbon-3: #686c72;
+
+  --color-ion: #9df0c4;
+  --color-ion-hi: #cdfae1;
+  --color-ion-deep: #1b6a4b;
+  --color-alert: #ff9583;
+  --color-alert-deep: #b42318;
+
+  /* Admin palette: same names the dashboard already uses, tuned to Ion. */
+  --color-field: #0c0e10;
+  --color-racing: #111316;
+  --color-racing-2: #16191d;
+  --color-moss: #1d2126;
+  --color-moss-2: #2a2f35;
+  --color-ivory: #f4f2ee;
+  --color-bone: #fbfaf8;
+  --color-paper: #eae7e1;
+  --color-ink: #0d0f12;
+  --color-slate: #575b61;
+  --color-sage: #a3a6ab;
+  --color-mist: #cfd1d4;
+  --color-brass: #2a8a62;
+  --color-brass-soft: #a8e9c6;
+  --color-brass-deep: #17533b;
+  --color-plate: #f4f2ee;
+  --color-plate-deep: #e2ded6;
+  --color-gb: #1f3d8f;
+  --color-mint: #6fd3a2;
+  --color-signal: #b42318;
+  --color-signal-soft: #fbe9e6;
+  --color-ok: #1c6b45;
+  --color-ok-soft: #e3f1e8;
+  --color-amber: #8f5a00;
+  --color-amber-soft: #fbefd9;
+
+  --font-display: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  --font-sans: var(--font-instrument), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.3;
+  --text-d1: clamp(2.6rem, 1.5rem + 4.4vw, 6.25rem);
+  --text-d1--line-height: 0.96;
+  --text-d2: clamp(2.1rem, 1.45rem + 2.7vw, 4.25rem);
+  --text-d2--line-height: 1;
+  --text-d3: clamp(1.6rem, 1.3rem + 1.2vw, 2.4rem);
+  --text-d3--line-height: 1.08;
+  --text-lead: clamp(1.05rem, 0.98rem + 0.3vw, 1.25rem);
+  --text-lead--line-height: 1.55;
+
+  /* Zoox's curve: a fast start that lands softly. */
+  --ease-glide: cubic-bezier(0.2, 0, 0, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    /* Large monitors: type, spacing and the page width grow in proportion, so a
+       2560px screen doesn't show laptop-sized text lost in a sea of picture. */
+    font-size: max(100%, calc(100% + (100vw - 1680px) * 0.0045));
+    background: var(--color-night-950);
+    scroll-padding-top: 6rem;
+    color-scheme: dark;
+  }
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: clip;
+  }
+  body {
+    background: var(--color-night-950);
+    color: var(--color-chalk);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: var(--color-ion);
+    color: var(--color-night-950);
+  }
+  :focus-visible {
+    outline: 1.5px solid var(--color-ion);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  .on-pearl :focus-visible {
+    outline-color: var(--color-ion-deep);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ------------------------------------------------------------------ type */
+@layer components {
+  /* Wide badge capitals: navigation, buttons, small headings. */
+  .label {
+    font-family: var(--font-display);
+    font-size: var(--text-label);
+    line-height: 1.3;
+    font-weight: 650;
+    font-stretch: 112%;
+    font-variation-settings: "wdth" 112;
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
+  }
+  .display {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-stretch: 104%;
+    font-variation-settings: "wdth" 104;
+    letter-spacing: -0.038em;
+  }
+  /* *Starred* words in a headline sit back in a quieter tone. */
+  .display em,
+  .quiet-em em {
+    font-style: normal;
+    color: var(--color-chalk-3);
+  }
+  .on-pearl .display em,
+  .on-pearl .quiet-em em {
+    color: var(--color-carbon-3);
+  }
+  /* The giant word that stands behind a car. */
+  .backdrop-word {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-stretch: 125%;
+    font-variation-settings: "wdth" 125;
+    letter-spacing: -0.045em;
+    line-height: 0.78;
+    text-transform: uppercase;
+    white-space: nowrap;
+    user-select: none;
+  }
+  .backdrop-word-fill {
+    background: linear-gradient(180deg, rgb(239 237 232 / 0.95) 0%, rgb(239 237 232 / 0.55) 46%, rgb(239 237 232 / 0.06) 92%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-stretch: 112%;
+    font-variation-settings: "wdth" 112;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+}
+
+/* Phones and tablets with little height (an iPhone SE in Safari, a phone on its side). */
+@custom-variant short (@media (max-width: 1023px) and (max-height: 640px));
+
+@utility container-page {
+  width: 100%;
+  max-width: 90rem;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 0.25rem + 3.2vw, 2.5rem);
+  /* Desktop screens where the page runs edge to edge: keep content clear of the quick-action rail (2.9rem) on the right. */
+  @media (min-width: 1024px) and (max-width: 1599px) {
+    padding-inline: 3.6rem;
+  }
+}
+
+/* Width of the display face. Set through the axis directly: WebKit ignores font-stretch here. */
+@utility wd-62 {
+  font-stretch: 62%;
+  font-variation-settings: "wdth" 62;
+}
+@utility wd-104 {
+  font-stretch: 104%;
+  font-variation-settings: "wdth" 104;
+}
+@utility wd-112 {
+  font-stretch: 112%;
+  font-variation-settings: "wdth" 112;
+}
+@utility wd-125 {
+  font-stretch: 125%;
+  font-variation-settings: "wdth" 125;
+}
+
+@utility hairline {
+  border-color: rgb(239 237 232 / 0.1);
+}
+
+/* ------------------------------------------------------------------ surfaces */
+@layer components {
+  .on-pearl {
+    background: var(--color-pearl-100);
+    color: var(--color-carbon);
+    color-scheme: light;
+  }
+  .surface-night {
+    background: linear-gradient(180deg, var(--color-night-800), var(--color-night-850));
+    border: 1px solid rgb(239 237 232 / 0.07);
+  }
+  /* Soft studio light from above, used behind cars. */
+  .spotlight {
+    background:
+      radial-gradient(60% 55% at 50% 0%, rgb(239 237 232 / 0.09), transparent 70%),
+      radial-gradient(40% 30% at 50% 100%, rgb(157 240 196 / 0.035), transparent 70%);
+  }
+  .grain-none {
+    background-image: none;
+  }
+}
+
+/* ------------------------------------------------------------------ the Zoox CTA
+   Text slides right while the chevron hops from its right side to its left. */
+@layer components {
+  .cta {
+    --cta-bg: var(--color-chalk);
+    --cta-fg: var(--color-night-950);
+    --cta-pad: 0.95rem 1.4rem;
+    --arrow-r: translateX(0);
+    --arrow-l: translateX(-1.9rem);
+    --text-x: translateX(0);
+    --dur: 0.334s;
+    position: relative;
+    display: inline-flex;
+    font-family: var(--font-display);
+    font-size: var(--text-label);
+    line-height: 1.3;
+    font-weight: 650;
+    font-stretch: 112%;
+    font-variation-settings: "wdth" 112;
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
+    border-radius: 1rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: inherit;
+    padding: var(--cta-pad);
+    background: var(--cta-bg);
+    color: var(--cta-fg);
+    transition:
+      transform 160ms var(--ease-out),
+      background-color 200ms var(--ease-glide);
+  }
+  .cta:active .cta-inner {
+    transform: scale(0.97);
+  }
+  .cta-text {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: -1.25rem;
+    white-space: nowrap;
+    transform: var(--text-x);
+    transition: transform var(--dur) var(--ease-glide);
+  }
+  .cta-icon {
+    display: flex;
+    height: 1.25rem;
+    width: 1.25rem;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    transition:
+      transform var(--dur) var(--ease-glide),
+      opacity var(--dur) var(--ease-glide);
+  }
+  .cta-icon svg {
+    width: 0.3rem;
+    height: 0.6rem;
+    margin-left: 0.45rem;
+  }
+  .cta-icon-l {
+    opacity: 0;
+    transform: var(--arrow-l);
+  }
+  .cta-icon-r {
+    transform: var(--arrow-r);
+  }
+  @media (hover: hover) {
+    .cta:hover,
+    .cta:focus-visible {
+      --dur: 0.5s;
+      --arrow-r: translateX(1.9rem);
+      --arrow-l: translateX(-0.6rem);
+      --text-x: translateX(1.25rem);
+    }
+    .cta:hover .cta-icon-l,
+    .cta:focus-visible .cta-icon-l {
+      opacity: 1;
+    }
+    .cta:hover .cta-icon-r,
+    .cta:focus-visible .cta-icon-r {
+      opacity: 0;
+    }
+  }
+  .cta[data-variant="ion"] {
+    --cta-bg: var(--color-ion);
+    --cta-fg: var(--color-night-950);
+  }
+  .cta[data-variant="night"] {
+    --cta-bg: var(--color-night-800);
+    --cta-fg: var(--color-chalk);
+  }
+  .cta[data-variant="carbon"] {
+    --cta-bg: var(--color-carbon);
+    --cta-fg: var(--color-pearl-50);
+  }
+  .cta[data-variant="ghost"] {
+    --cta-bg: rgb(239 237 232 / 0.06);
+    --cta-fg: var(--color-chalk);
+  }
+  .cta[data-variant="ghost"] .cta-inner {
+    box-shadow: inset 0 0 0 1px rgb(239 237 232 / 0.18);
+  }
+  .cta[data-variant="ghost-dark"] {
+    --cta-bg: transparent;
+    --cta-fg: var(--color-carbon);
+  }
+  .cta[data-variant="ghost-dark"] .cta-inner {
+    box-shadow: inset 0 0 0 1px rgb(13 15 18 / 0.2);
+  }
+  .cta[data-size="lg"] {
+    --cta-pad: 1.15rem 1.75rem;
+    font-size: 0.8125rem;
+    border-radius: 1.1rem;
+  }
+  .cta[data-size="sm"] {
+    --cta-pad: 0.6rem 1rem;
+    border-radius: 0.8rem;
+  }
+  /* Phones: a slimmer offer button so it never meets the centred wordmark. */
+  .nav-cta .cta[data-size="sm"] {
+    --cta-pad: 0.6rem 0.8rem;
+  }
+  .cta[data-block] {
+    display: flex;
+    width: 100%;
+  }
+  .cta[data-block] .cta-inner {
+    width: 100%;
+  }
+  .cta:disabled,
+  .cta[aria-disabled="true"] {
+    pointer-events: none;
+    opacity: 0.55;
+  }
+
+  /* Small text link with the same hopping chevron. */
+  .chev-link {
+    --x: translateX(0);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  /* A finger-sized target around the small label, without moving anything. */
+  .chev-link::after {
+    content: "";
+    position: absolute;
+    inset: -0.6rem -0.35rem;
+  }
+  .chev-link svg {
+    width: 0.3rem;
+    height: 0.6rem;
+    transition: transform 0.334s var(--ease-glide);
+    transform: var(--x);
+  }
+  @media (hover: hover) {
+    .chev-link:hover {
+      --x: translateX(0.3rem);
+    }
+  }
+
+  /* Round chevron chip (menu rows, list rows). */
+  .chip {
+    display: inline-flex;
+    height: 1.75rem;
+    width: 1.75rem;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: var(--color-carbon);
+    color: var(--color-pearl-50);
+    transition:
+      transform 0.334s var(--ease-glide),
+      background-color 0.2s;
+  }
+  .chip svg {
+    width: 0.3rem;
+    height: 0.6rem;
+  }
+}
+
+/* ------------------------------------------------------------------ navigation
+   A faithful take on zoox.com: a floating three-part bar that, on the way down,
+   clips itself to a single 64px tile, and on the way up unfolds from that tile
+   into a solid bar. */
+.nav {
+  --nav-fg: var(--color-chalk);
+  --nav-scroll-fg: var(--color-carbon);
+  --nav-top: 1.25rem;
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 60;
+  height: 4rem;
+  pointer-events: none;
+}
+.nav[data-theme="pearl"] {
+  --nav-fg: var(--color-carbon);
+}
+.nav-wrap {
+  position: absolute;
+  left: 50%;
+  top: var(--nav-top);
+  width: calc(100% - 5rem);
+  height: 4rem;
+  transform: translate3d(-50%, 0, 0);
+  transition: top 0.5s var(--ease-glide);
+}
+.nav[data-state="down"] {
+  --nav-top: 0.625rem;
+}
+.nav[data-state="up"] {
+  --nav-top: 1rem;
+}
+.nav-main {
+  --clip: 0px;
+  position: relative;
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  padding: 0 0.5rem;
+  border-radius: 1.5rem;
+  pointer-events: auto;
+  color: var(--nav-fg);
+  background-color: transparent;
+  clip-path: inset(0 var(--clip) 0 var(--clip) round 1rem);
+  will-change: clip-path;
+  transition:
+    clip-path 0.5s var(--ease-in-out),
+    background-color 0.6s var(--ease-glide),
+    color 0.3s cubic-bezier(1, 0, 1, 0.6);
+}
+.nav[data-state="down"] .nav-main {
+  --clip: calc(50% - 2rem);
+  color: var(--nav-scroll-fg);
+  transition:
+    clip-path 0.5s var(--ease-in-out),
+    background-color 0.3s var(--ease-glide),
+    color 0.3s cubic-bezier(1, 0, 1, 0.6);
+}
+.nav[data-state="up"] .nav-main {
+  background-color: var(--color-pearl-50);
+  color: var(--nav-scroll-fg);
+  transition:
+    clip-path 0.55s var(--ease-glide) 0.28s,
+    background-color 0.6s var(--ease-glide),
+    color 0.2s linear;
+}
+.nav-shadow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  border: 1px solid rgb(0 0 0 / 0.08);
+  box-shadow: 0 1.5rem 3rem -1rem rgb(5 6 7 / 0.28);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.3s var(--ease-glide),
+    visibility 0s 0.3s;
+}
+.nav[data-state="up"] .nav-shadow {
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.4s var(--ease-glide) 0.6s,
+    visibility 0s;
+}
+/* The tile the bar collapses into. */
+.nav-tile {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  display: flex;
+  height: 4rem;
+  width: 4rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  background: var(--color-pearl-50);
+  color: var(--color-carbon);
+  transform: translateX(-50%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.35s var(--ease-glide),
+    visibility 0s 0.35s;
+}
+.nav-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgb(0 0 0 / 0.08);
+  box-shadow: 0 1.5rem 3rem -1rem rgb(5 6 7 / 0.3);
+}
+.nav[data-state="down"] .nav-tile {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    opacity 0.35s var(--ease-glide) 0.38s,
+    visibility 0s;
+}
+.nav-tile .scroll-logo {
+  transition: transform 0.5s var(--ease-glide);
+}
+@media (hover: hover) {
+  .nav-tile:hover .scroll-logo {
+    transform: translateX(-0.15rem);
+  }
+}
+
+/* The collapsed tile's little car (after zoox.com's): the nav sets --wheel from
+   the scroll position, so the wheels roll forwards down the page and back up it. */
+.scroll-logo {
+  color: var(--color-carbon);
+  overflow: visible;
+}
+.scroll-wheel {
+  transform-box: view-box;
+  transform: rotate(var(--wheel, 0deg));
+}
+
+/* The admin's square mark: on dark the bolt is cut out of the tile; on pearl it glows ion. */
+:root {
+  --mark-bolt: var(--color-night-950);
+}
+.on-pearl {
+  --mark-bolt: var(--color-ion);
+}
+
+/* Hamburger: a rounded square whose two strokes draw together on hover. */
+.burger {
+  position: relative;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 33.33%;
+  color: inherit;
+}
+.burger::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid currentColor;
+  opacity: 0.22;
+  transition: opacity 0.25s var(--ease-glide);
+}
+.burger-lines,
+.burger-x {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  transition: opacity 0.25s var(--ease-glide);
+}
+.burger-lines span {
+  display: block;
+  height: 2px;
+  width: 0.7rem;
+  border-radius: 2px;
+  background: currentColor;
+  transition: translate 0.25s var(--ease-glide);
+}
+.burger-x {
+  opacity: 0;
+}
+.burger-x svg {
+  height: 0.75rem;
+  width: 0.75rem;
+  transform: rotate(90deg);
+  transition: scale 0.25s var(--ease-glide);
+}
+.burger[aria-expanded="true"] .burger-lines {
+  opacity: 0;
+}
+.burger[aria-expanded="true"] .burger-x {
+  opacity: 1;
+  transition-duration: 0.5s;
+}
+@media (hover: hover) {
+  .burger:hover::after {
+    opacity: 0.7;
+  }
+  .burger:hover .burger-lines span:first-child {
+    translate: 0 0.125rem;
+    transition-duration: 0.5s;
+  }
+  .burger:hover .burger-lines span:last-child {
+    translate: 0 -0.125rem;
+    transition-duration: 0.5s;
+  }
+  .burger:hover .burger-x svg {
+    scale: 0.8;
+    transition-duration: 0.5s;
+  }
+}
+
+/* Centre links: a chevron slides in from the left on hover. */
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  inset: -1rem -0.75rem;
+}
+.nav-link .nav-link-icon {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0.3rem;
+  height: 0.6rem;
+  opacity: 0;
+  transform: translate(-1.25rem, -50%);
+  transition:
+    transform 0.334s var(--ease-glide),
+    opacity 0.334s var(--ease-glide);
+}
+.nav-link[aria-current="page"] .nav-link-icon {
+  opacity: 1;
+  transform: translate(-0.95rem, -50%);
+}
+@media (hover: hover) {
+  .nav-link:hover .nav-link-icon {
+    opacity: 1;
+    transform: translate(-0.95rem, -50%);
+  }
+}
+
+/* Mobile: the full bar slides away and a compact pill takes over. */
+@media (max-width: 1023px) {
+  .nav-wrap {
+    width: calc(100% - 2rem);
+    top: 0.75rem;
+  }
+  .nav-main {
+    grid-template-columns: 1fr auto 1fr;
+    clip-path: none;
+    transition: transform 0.5s var(--ease-glide);
+  }
+  .nav[data-state="down"] .nav-main,
+  .nav[data-state="up"] .nav-main {
+    transform: translateY(calc(-100% - 2rem));
+    background-color: transparent;
+  }
+  /* Phones: menu and offer button sit on the page gutters, leaving the wordmark room. */
+  @media (max-width: 639px) {
+    .nav-main {
+      padding: 0;
+    }
+  }
+  /* The narrowest phones: the offer pill drops its arrows and tightens up so it clears the wordmark. */
+  @media (max-width: 374px) {
+    .nav-cta .cta[data-size="sm"] {
+      --cta-pad: 0.55rem 0.6rem;
+    }
+    .nav-cta .cta[data-size="sm"] .cta-icon {
+      display: none;
+    }
+    .nav-cta .cta[data-size="sm"] .cta-text {
+      margin-left: 0;
+      --text-x: translateX(0);
+    }
+  }
+  .nav[data-state] .nav-tile {
+    display: none;
+  }
+  .nav-pill {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    align-items: center;
+    height: 4rem;
+    padding: 0 0.5rem;
+    border-radius: 1rem;
+    background: var(--color-pearl-50);
+    color: var(--color-carbon);
+    box-shadow:
+      0 0 0 1px rgb(0 0 0 / 0.07),
+      0 1.5rem 3rem -1rem rgb(5 6 7 / 0.3);
+    pointer-events: auto;
+    transform: translate(-50%, calc(-100% - 2rem));
+    transition: transform 0.5s var(--ease-glide);
+  }
+  .nav[data-state="down"] .nav-pill,
+  .nav[data-state="up"] .nav-pill {
+    transform: translate(-50%, 0);
+  }
+}
+@media (min-width: 1024px) {
+  .nav-pill {
+    display: none;
+  }
+}
+
+/* First load: the bar's pieces rise in one after another and the CTA opens from its centre. */
+@keyframes nav-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.7rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes nav-cta-in {
+  from {
+    clip-path: inset(50% 50% 50% 50% round 1rem);
+  }
+  to {
+    clip-path: inset(0 0 0 0 round 1rem);
+  }
+}
+.nav-enter [data-enter] {
+  animation: nav-in 0.9s var(--ease-glide) both;
+  animation-delay: calc(0.1s + var(--d, 0) * 0.07s);
+}
+.nav-enter .nav-cta .cta-inner {
+  animation: nav-cta-in 1s var(--ease-glide) 0.45s both;
+}
+
+/* Drawer menu: a pearl sheet that unfolds from the hamburger. */
+.drawer-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  background: rgb(5 6 7 / 0.42);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-glide);
+}
+.drawer-scrim[data-open="true"] {
+  opacity: 1;
+}
+.drawer {
+  position: fixed;
+  z-index: 71;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  display: flex;
+  width: min(25rem, calc(100% - 1rem));
+  flex-direction: column;
+  border-radius: 1.1rem;
+  background: var(--color-pearl-50);
+  color: var(--color-carbon);
+  clip-path: inset(0 100% 0 0 round 1.1rem);
+  transition: clip-path 0.55s var(--ease-glide);
+}
+.drawer[data-open="true"] {
+  clip-path: inset(0 0 0 0 round 1.1rem);
+}
+.drawer [data-stagger] {
+  opacity: 0;
+  transform: translateX(-0.75rem);
+  transition:
+    opacity 0.4s var(--ease-glide),
+    transform 0.5s var(--ease-glide);
+}
+.drawer[data-open="true"] [data-stagger] {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(0.12s + var(--i, 0) * 0.045s);
+}
+.drawer-row .chip {
+  transition: transform 0.334s var(--ease-glide);
+}
+@media (hover: hover) {
+  .drawer-row:hover .chip {
+    transform: translateX(0.25rem);
+  }
+}
+
+/* ------------------------------------------------------------------ quick dock
+   Range Rover's floating action rail: icons that open into labels. */
+.dock-item {
+  --w: 2.9rem;
+  display: flex;
+  height: 2.9rem;
+  width: var(--w);
+  align-items: center;
+  overflow: hidden;
+  border-radius: 0.8rem 0 0 0.8rem;
+  white-space: nowrap;
+  transition:
+    width 0.45s var(--ease-glide),
+    background-color 0.2s;
+}
+@media (hover: hover) {
+  .dock-item:hover,
+  .dock-item:focus-visible {
+    --w: var(--open-w, 11rem);
+  }
+}
+
+/* Home steps road: when a card can't fit between the heading and the parked car, it steps aside. */
+/* Hidden but still laid out, so the next measurement sees the card's real height. */
+[data-s="step-card"][data-off] {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* The quote stage: a vehicle rolls in when it changes to match your make. */
+@keyframes stage-in {
+  from {
+    opacity: 0;
+    transform: translateX(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------ footer reveal
+   The page lifts away like a cover to show the car parked underneath. */
+.footer-reveal {
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+.footer-reveal-fixed {
+  position: fixed;
+  inset: auto 0 0 0;
+}
+
+/* ------------------------------------------------------------------ long-form */
+@layer components {
+  .prose-ion {
+    max-width: 44rem;
+    font-size: 1.02rem;
+    line-height: 1.75;
+    color: var(--color-carbon-2);
+  }
+  .prose-ion > * + * {
+    margin-top: 1.1em;
+  }
+  .prose-ion h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-stretch: 104%;
+    font-variation-settings: "wdth" 104;
+    letter-spacing: -0.025em;
+    color: var(--color-carbon);
+    font-size: clamp(1.45rem, 1.25rem + 0.8vw, 1.9rem);
+    line-height: 1.15;
+    margin-top: 2.4em;
+    scroll-margin-top: 7rem;
+  }
+  .prose-ion h3 {
+    font-family: var(--font-display);
+    font-weight: 650;
+    color: var(--color-carbon);
+    font-size: 1.05rem;
+    margin-top: 1.8em;
+  }
+  .prose-ion strong {
+    color: var(--color-carbon);
+  }
+  .prose-ion ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+  }
+  .prose-ion ol {
+    list-style: decimal;
+    padding-left: 1.25rem;
+  }
+  .prose-ion li + li {
+    margin-top: 0.4em;
+  }
+  .prose-ion li::marker {
+    color: var(--color-carbon-3);
+  }
+  .prose-ion a {
+    color: var(--color-carbon);
+    text-decoration: underline;
+    text-decoration-color: rgb(13 15 18 / 0.3);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.2s;
+  }
+  .prose-ion a:hover {
+    text-decoration-color: var(--color-carbon);
+  }
+  .prose-ion table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.94rem;
+  }
+  .prose-ion th,
+  .prose-ion td {
+    border-bottom: 1px solid rgb(13 15 18 / 0.1);
+    padding: 0.7rem 0.75rem 0.7rem 0;
+    text-align: left;
+    vertical-align: top;
+  }
+  .prose-ion th {
+    font-family: var(--font-display);
+    font-weight: 650;
+    color: var(--color-carbon);
+  }
+}
+
+/* ------------------------------------------------------------------ motion helpers */
+@keyframes ion-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.82);
+  }
+}
+.ion-dot {
+  display: inline-block;
+  height: 0.45rem;
+  width: 0.45rem;
+  border-radius: 999px;
+  background: var(--color-ion);
+  box-shadow: 0 0 0.75rem rgb(157 240 196 / 0.6);
+  animation: ion-pulse 2.4s var(--ease-in-out) infinite;
+}
+.on-pearl .ion-dot {
+  background: #2a8a62;
+  box-shadow: 0 0 0.6rem rgb(42 138 98 / 0.35);
+}
+
+/* Home story: before scripts run, the car waits off-stage and the word sits below its mask. */
+.story-intro .story-car {
+  transform: translateX(42vw);
+}
+.story-intro .story-letter {
+  transform: translateY(108%);
+}
+
+/* On phones the backdrop word is wider than the screen, so it drifts slowly across. */
+@keyframes word-drift {
+  from {
+    transform: translateX(4vw);
+  }
+  to {
+    transform: translateX(calc(-100% + 96vw));
+  }
+}
+@media (max-width: 639px) and (prefers-reduced-motion: no-preference) {
+  .word-drift {
+    animation: word-drift 11s var(--ease-in-out) infinite alternate;
+  }
+}
+
+/* Cookie card rises in once. */
+.consent-in {
+  transition:
+    opacity 300ms ease,
+    transform 450ms var(--ease-glide);
+  @starting-style {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+/* Native <details> accordion with an animated height. */
+.faq-item {
+  interpolate-size: allow-keywords;
+}
+.faq-item::details-content {
+  height: 0;
+  overflow: clip;
+  transition:
+    height 0.45s var(--ease-glide),
+    content-visibility 0.45s allow-discrete;
+}
+.faq-item[open]::details-content {
+  height: auto;
+}
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.faq-item .faq-plus {
+  transition: transform 0.45s var(--ease-glide);
+}
+.faq-item[open] .faq-plus {
+  transform: rotate(45deg);
+}
+
+/* ------------------------------------------------------------------ admin compatibility
+   Class names the dashboard still uses, restated in the Ion palette. */
+@layer components {
+  .grain {
+    position: relative;
+  }
+  .light-trails {
+    background:
+      radial-gradient(60% 50% at 30% 0%, rgb(157 240 196 / 0.08), transparent 70%),
+      var(--color-night-900);
+  }
+}
+
+/* ------------------------------------------------------------------ sheets
+   Sections slide over the one before them like cards on a stack (as on
+   zoox.com), so light and dark never meet at a hard line. */
+:root {
+  --sheet-r: clamp(1.5rem, 0.9rem + 2.4vw, 3rem);
+}
+.sheet {
+  position: relative;
+  z-index: 2;
+  margin-top: calc(var(--sheet-r) * -1);
+  border-top-left-radius: var(--sheet-r);
+  border-top-right-radius: var(--sheet-r);
+  box-shadow: 0 -1.75rem 3.5rem -1.5rem rgb(0 0 0 / 0.4);
+}

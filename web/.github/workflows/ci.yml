@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      APP_SECRET: ci-only-secret-0123456789-abcdefghijklmnopqrstuvwxyz
+      NEXT_PUBLIC_SITE_URL: http://localhost:3000
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm test
+      - run: npm run db:migrate
+      - run: npm run build
+
+  e2e:
+    runs-on: ubuntu-latest
+    needs: verify
+    timeout-minutes: 30
+    env:
+      APP_SECRET: ci-only-secret-0123456789-abcdefghijklmnopqrstuvwxyz
+      NEXT_PUBLIC_SITE_URL: http://localhost:3000
+      QUOTE_RATE_LIMIT_PER_HOUR: "500"
+      ADMIN_NOTIFY_EMAILS: team@example.com
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium firefox webkit
+      - run: npm run db:migrate
+      - run: npm run build
+      - run: npm start &
+      - run: npx wait-on http://localhost:3000 --timeout 60000
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: playwright-report

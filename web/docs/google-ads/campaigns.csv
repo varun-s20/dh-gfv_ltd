@@ -1,0 +1,5 @@
+Campaign,Campaign Type,Networks,Budget,Budget type,Bid Strategy Type,Campaign Status,Location,Location target type,Language,Tracking template,Custom parameter
+GF | Search | Tesla,Search,Google search,24,Daily,Manual CPC,Paused,United Kingdom,Presence,English,{lpurl}?utm_source=google&utm_medium=cpc&utm_campaign={_campaign}&utm_term={keyword},{_campaign}=tesla-core
+GF | Search | All EV,Search,Google search,20,Daily,Manual CPC,Paused,United Kingdom,Presence,English,{lpurl}?utm_source=google&utm_medium=cpc&utm_campaign={_campaign}&utm_term={keyword},{_campaign}=ev-core
+GF | Search | EV Vans,Search,Google search,8,Daily,Manual CPC,Paused,United Kingdom,Presence,English,{lpurl}?utm_source=google&utm_medium=cpc&utm_campaign={_campaign}&utm_term={keyword},{_campaign}=van-core
+GF | Search | Brand,Search,Google search,3,Daily,Manual CPC,Paused,United Kingdom,Presence,English,{lpurl}?utm_source=google&utm_medium=cpc&utm_campaign={_campaign}&utm_term={keyword},{_campaign}=brand
