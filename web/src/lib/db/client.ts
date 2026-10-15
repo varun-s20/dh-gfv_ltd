@@ -40,7 +40,13 @@ async function connect(): Promise<Db> {
   // shared data directory would be opened concurrently and corrupted; give each
   // build worker a throwaway in-memory database instead (pages fall back to defaults).
   const building = process.env.NEXT_PHASE === "phase-production-build";
-  const dataDir = process.env.PGLITE_DIR ? path.resolve(process.env.PGLITE_DIR) : path.join(process.cwd(), ".data", "pglite");
+  // Vercel's deployed code is read-only; /tmp is the only place a function may write. Data there is temporary
+  // (it resets when the instance restarts), so this is for previews only: set DATABASE_URL for a real launch.
+  const dataDir = process.env.PGLITE_DIR
+    ? path.resolve(process.env.PGLITE_DIR)
+    : process.env.VERCEL
+      ? "/tmp/gf-pglite"
+      : path.join(process.cwd(), ".data", "pglite");
   if (!building) mkdirSync(dataDir, { recursive: true });
   const client = building ? new PGlite() : new PGlite(dataDir);
   const db = drizzle(client, { schema, casing: "snake_case" });

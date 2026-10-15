@@ -7,6 +7,7 @@ import { z } from "zod";
 import { fail, type ActionState } from "@/lib/admin/action-state";
 import { safeNextPath } from "@/lib/admin/next-path";
 import { burnPasswordCheck, createSession, destroySession, getSession, markMfaPassed, verifyPassword } from "@/lib/auth/session";
+import { ensureEnvAdmin } from "@/lib/auth/env-admin";
 import { verifyTotp } from "@/lib/auth/totp";
 import { getDb, schema } from "@/lib/db/client";
 import { audit, clearRateLimit, rateLimit, requestContext, sha256 } from "@/lib/security";
@@ -46,6 +47,9 @@ export async function signIn(_prev: ActionState | null, formData: FormData): Pro
     await audit("admin.login.locked", { actorEmail: email, detail: { scope: allowed ? "ip" : "account" } });
     return fail(LOCKED);
   }
+
+  // A login supplied through ADMIN_EMAIL / ADMIN_PASSWORD is made real the first time it's used.
+  await ensureEnvAdmin(email, password);
 
   const db = await getDb();
   const [user] = await db
